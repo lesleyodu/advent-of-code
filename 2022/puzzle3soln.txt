@@ -1,0 +1,6 @@
+cat puzzle3.txt | tr -d '\r' | awk -v OFS='\n' '{print substr($1,1,length/2),substr($1,length/2+1,length){' | paste -s -d' \n' > puzzle3b.txt
+bash puzzle3.sh > puzzle3c.txt
+cat puzzle3c.txt | awk '{if ($1-96<0) print $1-64+26; else print $1-96;}' | tr '\n' '+' | sed 's/\+$/\n/' | bc -l
+
+bash puzzle3b.sh > puzzle3d.txt
+cat puzzle3d.txt | awk '{if ($1-96<0) print $1-64+26; else print $1-96;}' | tr '\n' '+' | sed 's/\+$/\n/' | bc -l

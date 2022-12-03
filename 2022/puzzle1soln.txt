@@ -1,0 +1,2 @@
+tr -d '\r' < puzzle1.txt | tr '\n' ',' | sed 's/$/\n/' | sed 's/,,/-/g' | tr '-' '\n' | tr ',' '+' | sed 's/$/+0/g' | bc -l | sort -n | tail -1
+tr -d '\r' < puzzle1.txt | tr '\n' ',' | sed 's/$/\n/' | sed 's/,,/-/g' | tr '-' '\n' | tr ',' '+' | sed 's/$/+0/g' | bc -l | sort -n | tail -3 | tr '\n' '+' | sed 's/\+$/\n/' | bc -l
