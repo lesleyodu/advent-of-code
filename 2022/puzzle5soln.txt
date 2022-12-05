@@ -1,0 +1,4 @@
+head -8 puzzle5.txt | tr -d '\r' | tr ' ' '-' | tr '[' '-' | tr ']' '-' | sed 's/^-//g' | sed 's/-$//g' | sed 's/---/-g/' | sed 's/\(.\)./\1\t/g' > puzzle5b.txt
+for i in {1..9}; do cut -f"$i" puzzle5b.txt | paste -s; done | tr '\t' ' ' | rev | tr -d ' ' | tr -d '-' > puzzle5c.txt
+tail -501 puzzle5.txt > puzzle5d.txt
+bash puzzle5.sh
