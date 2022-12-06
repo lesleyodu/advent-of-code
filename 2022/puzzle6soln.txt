@@ -1,0 +1,4 @@
+cat puzzle6.txt | grep -oPb '(.)(?!\1)(.)(?!\1)(?!\2)(.)(?!\1)(?!\2)(?!\3)(.)' | head -1 | sed 's/[^0-9]//g' | sed 's/$/+4/' | bc
+
+for i in {1..13}; do echo -n '(.)'; for j in $(seq 1 $i); do echo -n '(?!\'; echo -n "$j)"; done >> p6e.txt; done >> p6e.txt; echo -n '(.)' >> p6e.txt
+cat puzzle6.txt | grep -oPb 'PASTE' | head -1 | sed 's/[^0-9]//g' | sed 's/$/+14/' | bc
