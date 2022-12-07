@@ -1,0 +1,9 @@
+cat puzzle7.txt | grep '\$ cd' | sed 's/\$ cd //g' > pz7dir.txt
+#cat pz7.txt | tr -d '\r' | grep '^\$ cd ' | grep -v '\.\.$' | sed 's/\$ cd //g' > pz7names.txt
+bash puzzle7a.sh > pz7names2.txt
+cat puzzle7.txt | sed 's/^dir /0 dir /g' | grep -oP '^([0-9]+|\$ ls)' | tr '\n' '+' | sed 's/\$ ls/\n/g' | sed 's/^\+//g' | sed 's/\+$//g' | sed 's/$/\n/' | bc -l > pz7sizes.txt
+paste pz7names2.txt pz7sizes.txt > pz7join.txt
+bash puzzle7b.sh  | awk '$1 < 100001' | tr '\n' '+' | sed 's/\+$/\n/' | bc
+
+cat pz7sizes.txt | tr '\n' '+' | sed 's/\+$/\n' | bc | sed 's/^/70000000-/' | bc | sed 's/^/30000000-' | bc
+bash puzzle7b.sh | awk '$1 >= ANSWERPREV' | sort -n | head -1
