@@ -1,0 +1,8 @@
+#all pairs that can be determined from first element aka 90% of them
+cat puzzle13.txt | tr -d '\r' | sed 's/10/L/g' | tr '0123456789' 'BCDEFGHIJK' | sed 's/\[\]/[A]/g' | sed 's/^\[+//g' | sed 's/^\(.\).*/\1/g' | tr '\n' ' ' | sed 's/  /\n/g' | awk '{i += 1; print i,$0}' | awk '{if ($2 < $3) print $1,"true"; else if ($2 > $3) print $1,"false"; else print $1,"unk";}' | grep 'true' | sed 's/ true/+/g' | tr -d '\n' | sed 's/+$/\n/' | bc
+
+#grep unk's and compute by hand, only about 25 of them.
+cat puzzle13.txt | tr -d '\r' | sed 's/10/L/g' | tr '0123456789' 'BCDEFGHIJK' | sed 's/\[\]/[A]/g' | tr '\n' ' ' | sed 's/  /\n/g' | awk '{i += 1; print i,$0}' | grep -P '^(3|12...) '
+
+#part 2 - sort then grab the two line numbers of the first 2 and first 6 and add 1 to the 6 index and then multiply
+cat puzzle13.txt | tr -d '\r' |sed 's/\[\]/[-]/g' | sed 's/^\[+//g' | sed 's/10/L/g' | grep '.' | sort | awk '{i += 1; print i,$0}' 
