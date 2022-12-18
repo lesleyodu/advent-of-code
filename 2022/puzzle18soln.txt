@@ -1,0 +1,7 @@
+cat puzzle18.txt | wc -l | sed 's/$/+1/' | bc | sed 's/$/*6/' | bc
+cat puzzle18.txt | tr -d '\r' | tr ',' ' ' | awk '{printf("%.2d %.2d %.2d\n", $1, $2, $3)}' > puzzle18b.txt 
+#cat pz18.txt | tr -d '\r' | sort | tr ',' ' ' | awk '{if ($1 == a && $2 == b && $3 == c + 1) s += 2; a = $1; b = $2; c = $3; print $0,s}' | tail -1 | awk '{print $4}'
+cat puzzle18b.txt | tr -d '\r' | tr ',' ' ' | awk '{print $1, $3, $2}' | sort |  awk '{if ($1 ...
+#132 213 231 duplicated
+
+#take line 1 answer and subtract the other 3 lines
